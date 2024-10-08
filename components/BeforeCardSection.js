@@ -1,10 +1,18 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React from 'react'
 import Colors from '../constants/colors'
 
-function BeforeCardSection({profileImage, username, title}) {
+function BeforeCardSection({profileImage, username, title, onPress}) {
   return (
     <View style={styles.outerSection}> 
+    <Pressable
+        android_ripple={{ color: "#ccc" }}
+        style={({ pressed }) => [
+          styles.button,
+          pressed ? styles.buttonPressed : null,
+        ]}
+        onPress={onPress}
+      >
     <View style={styles.profileOuterSection}>
         <Image style ={styles.profilePic} 
             //source={ {uri: profileImage}}
@@ -16,7 +24,7 @@ function BeforeCardSection({profileImage, username, title}) {
        >{title}</Text>
        <Text style={styles.usernameText}>{username}</Text>
        </View>
-
+       </Pressable>
     </View>
   )
 }
@@ -71,6 +79,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 4,
-    }
+    },
+    button: {
+        flex: 1,
+      },
+      buttonPressed: {
+        opacity: 0.5,
+      },
 
 })

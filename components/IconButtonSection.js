@@ -1,13 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, Pressable } from 'react-native'
 import React from 'react'
 import Feather from '@expo/vector-icons/Feather';
-import Colors from '../constants/colors'
+import Colors from '../constants/colors';
 
-const IconButtonSection = () => {
+function IconButtonSection ({onPress, name, size, color}) {
   return (
-    <View>
-      <Feather name="user" size={24} color={Colors.black.default} />
-    </View>
+    <Pressable onPress={onPress} style={{paddingHorizontal:10}}>
+      <Feather name={name} size={size} color={color} />
+    </Pressable>
   )
 }
 

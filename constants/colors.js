@@ -24,10 +24,11 @@ const Colors ={
       300:        '#b0b0b0',
       400:         "#888888",
       default:     "#333333",
-      null:        '#0000000',
+      null:        '#000000',
     },
     white: {
       deafult:     "#f8f8f8",
+      200:         "#dcdcdc",
       null: "#ffffff",
       empty: 'rgba(0,0,0,1)',
     },

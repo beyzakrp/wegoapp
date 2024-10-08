@@ -8,6 +8,11 @@
         reminder,
         fullCapacity,
         enrolled,
+        description,
+        hour,
+        date,
+        location,
+        participants,
         
 
     ) {
@@ -19,6 +24,11 @@
         this.reminder = reminder;
         this.fullCapacity = fullCapacity;
         this.enrolled = enrolled;
+        this.description =description;
+        this.hour = hour;
+        this.date = date;
+        this.location = location;
+        this.participants = participants;
 
     }
  }
