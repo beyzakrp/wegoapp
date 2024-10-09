@@ -8,6 +8,8 @@ import AfterDetailsScreen from '../screens/Home/AfterDetailsScreen';
 import TabNavigator from './TabNavigator';
 import Colors from '../constants/colors';
 import DrawerNavigator from './DrawerNavigator';
+import LikedDrawerScreen from '../screens/Home/LikedDrawerScreen';
+import LikedContextProvider from '../store/context/liked-context';
 
 
 
@@ -26,6 +28,8 @@ const AppTheme = {
    }}
 
   return (
+  <LikedContextProvider>
+
     <NavigationContainer theme={AppTheme}>
         <Stack.Navigator> 
           <Stack.Screen name='main' component={TabNavigator} options={{headerShown: false}}/>
@@ -37,6 +41,7 @@ const AppTheme = {
 
         </Stack.Navigator>
         </NavigationContainer>
+</LikedContextProvider>
     
   )
 }
