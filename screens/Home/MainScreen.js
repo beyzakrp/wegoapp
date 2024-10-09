@@ -10,7 +10,9 @@ import {
   Button,
   Pressable,
   Image,
-  Animated
+  Animated,
+  SectionList,
+  Dimensions,
 } from "react-native";
 import React, { useLayoutEffect, useRef } from "react";
 import { AFTERS, EVENTS, BEFORES } from "../../data/dummy-data";
@@ -18,37 +20,33 @@ import EventCardSection from "../../components/EventCardSection";
 import HeaderSections from "../../components/HeaderSections";
 import AfterCardSection from "../../components/AfterCardSection";
 import BeforeCardSection from "../../components/BeforeCardSection";
-import UpperLogoBarSection from "../../components/UpperLogoBarSection";
-import Feather from "@expo/vector-icons/Feather";
 
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import EventDetailsScreen from "./EventDetailsScreen";
-import EventGridTile from "../../components/EventGridTile";
-import EventsFeedScreenPart from "../EventsFeedScreenPart";
-import LogoTitle from "../../components/LogoTitle";
-import Colors from "../../constants/colors";
 import IconButtonSection from "../../components/IconButtonSection";
 
 //const Stack = createNativeStackNavigator();
+
+const deviceWidth = Dimensions.get("window").width;
+const paddingH = deviceWidth / 28;
 
 function MainScreen({ navigation }) {
   function headerButtonPressHandler() {
     console.log("Pressed to the Upper bar");
   }
-
+  console.log(paddingH);
   const scrollY = useRef(new Animated.Value(0)).current;
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      
       headerRight: () => {
         return (
-            <IconButtonSection 
-            onPress={headerButtonPressHandler}
-            name={"bell"}
-            size={24}
-            color={'#333333'} />
+          <View style={{ marginHorizontal: paddingH }}>
+            <IconButtonSection
+              onPress={headerButtonPressHandler}
+              name={"notifications-outline"}
+              size={24}
+              color={"#333333"}
+            />
+          </View>
         );
       },
       headerTitle: () => {
@@ -57,21 +55,20 @@ function MainScreen({ navigation }) {
             style={[{ width: 75, height: 24 }]}
             source={require("/Users/beyzakarapicak/wgapp/assets/images/wegoBlackLogo.png")}
           />
-
         );
       },
-    
-     
-      
+
       headerShadowVisible: true,
       headerTitleAlign: "center",
-      headerShown: scrollY.interpolate({
-        inputRange: [0, 50],
-        outputRange: [1, 0],
-        extrapolate: 'clamp',
-      }) === 0 ? false : true,
+      headerShown:
+        scrollY.interpolate({
+          inputRange: [0, 50],
+          outputRange: [1, 0],
+          extrapolate: "clamp",
+        }) === 0
+          ? false
+          : true,
     });
-    
   }, [navigation, headerButtonPressHandler, scrollY]);
 
   function renderBeforeEvent(itemData) {
@@ -95,8 +92,7 @@ function MainScreen({ navigation }) {
     function pressHandler() {
       navigation.navigate("AfterDetails", {
         afterTitle: itemData.item.title,
-
-      })
+      });
     }
     return (
       <AfterCardSection
@@ -111,6 +107,7 @@ function MainScreen({ navigation }) {
   function renderEventItem(itemData) {
     function pressHandler() {
       navigation.navigate("EventDetails", {
+        eventId: itemData.item.id,
         eventTitle: itemData.item.title,
         eventProfileImg: itemData.item.profileImage,
         eventDescription: itemData.item.description,
@@ -126,6 +123,7 @@ function MainScreen({ navigation }) {
 
     return (
       <EventCardSection
+        id={itemData.item.id}
         title={itemData.item.title}
         profileImage={itemData.item.profileImage}
         eventImage={itemData.item.eventImage}
@@ -142,9 +140,46 @@ function MainScreen({ navigation }) {
     );
   }
   return (
-<>
+    <>
       <ScrollView>
-        
+        <HeaderSections title={"Befores"} />
+        <FlatList
+          data={BEFORES}
+          keyExtractor={(item) => item.id}
+          renderItem={renderBeforeEvent}
+          horizontal={true}
+          nestedScrollEnabled={true}
+        />
+
+        <HeaderSections title={"Afters"} />
+        <FlatList
+          data={AFTERS}
+          keyExtractor={(item) => item.id}
+          renderItem={renderAfterItem}
+          horizontal={true}
+          nestedScrollEnabled={true}
+        />
+
+        <HeaderSections title={"Events"} />
+        <FlatList
+          data={EVENTS}
+          keyExtractor={(item) => item.id}
+          renderItem={renderEventItem}
+          numColumns={2}
+          vertical={true}
+          nestedScrollEnabled={true}
+        />
+      </ScrollView>
+    </>
+  );
+}
+export default MainScreen;
+
+const styles = StyleSheet.create({});
+
+/*
+  <ScrollView style={{}}>
+      
           <HeaderSections title={"Befores"} />
           <FlatList
             data={BEFORES}
@@ -174,9 +209,4 @@ function MainScreen({ navigation }) {
           />
         
       </ScrollView>
-      </>
-  );
-}
-export default MainScreen;
-
-const styles = StyleSheet.create({});
+*/

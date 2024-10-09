@@ -2,8 +2,8 @@ import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import React, { useLayoutEffect } from "react";
 import Colors from "/Users/beyzakarapicak/wgapp/constants/colors.js";
 import { Dimensions } from "react-native";
-import Feather from "@expo/vector-icons/Feather";
 import PrimaryButton from "/Users/beyzakarapicak/wgapp/components/PrimaryButton";
+import { Ionicons } from "@expo/vector-icons";
 
 function EventDetailsScreen({ route, navigation }) {
   const colorDetailsIcon = Colors.black[300];
@@ -11,15 +11,17 @@ function EventDetailsScreen({ route, navigation }) {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => {
-        return  <Image
-        style={[{ width: 75, height: 24 }]}
-        source={require("/Users/beyzakarapicak/wgapp/assets/images/wegoBlackLogo.png")}
-      />
+        return (
+          <Image
+            style={[{ width: 75, height: 24 }]}
+            source={require("/Users/beyzakarapicak/wgapp/assets/images/wegoBlackLogo.png")}
+          />
+        );
       },
       headerShadowVisible: false,
-      headerTitleAlign: 'center',
-    })
-  })
+      headerTitleAlign: "center",
+    });
+  });
 
   return (
     <>
@@ -38,21 +40,21 @@ function EventDetailsScreen({ route, navigation }) {
 
           <View style={styles.details}>
             <View style={styles.duoDetails}>
-              <Feather name="calendar" size={20} color={colorDetailsIcon} />
+              <Ionicons name="calendar" size={20} color={colorDetailsIcon} />
               <Text style={styles.duoDetailsText}>
                 {route.params.eventDate}
               </Text>
             </View>
 
             <View style={styles.duoDetails}>
-              <Feather name="clock" size={20} color={colorDetailsIcon} />
+              <Ionicons name="time" size={20} color={colorDetailsIcon} />
               <Text style={styles.duoDetailsText}>
                 {route.params.eventHour}
               </Text>
             </View>
 
             <View style={styles.duoDetails}>
-              <Feather name="map-pin" size={20} color={colorDetailsIcon} />
+              <Ionicons name="location" size={20} color={colorDetailsIcon} />
               <Text style={styles.duoDetailsText}>
                 {route.params.eventLocation}
               </Text>
@@ -75,15 +77,19 @@ function EventDetailsScreen({ route, navigation }) {
               </View>
             </View>
             <View style={styles.heartIcon}>
-              <Feather
-                name="message-circle"
+              <Ionicons
+                name="chatbubble-outline"
                 size={24}
                 color={Colors.black[300]}
               />
               <Text style={styles.underIcon}>243</Text>
             </View>
             <View style={styles.heartIcon}>
-              <Feather name="heart" size={24} color={Colors.black[300]} />
+              <Ionicons
+                name="heart-outline"
+                size={24}
+                color={Colors.black[300]}
+              />
               <Text style={styles.underIcon}>243</Text>
             </View>
           </View>
@@ -92,7 +98,7 @@ function EventDetailsScreen({ route, navigation }) {
             <View style={styles.infoParticipantsInnerSection}>
               <Text style={styles.participantsText}>Other Participants</Text>
             </View>
-            <Feather name="users" size={20} color={Colors.black.default} />
+            <Ionicons name="people" size={20} color={Colors.black.default} />
             <Text style={styles.capacityInner}>
               {route.params.eventEnrolled}/{route.params.eventCapacity}
             </Text>

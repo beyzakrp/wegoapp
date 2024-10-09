@@ -1,12 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { useFonts } from "expo-font";
-import { useEffect } from "react";
-import * as SplashScreen from "expo-splash-screen";
-import  Colors  from "./constants/colors";
-import { EVENTS } from "./data/dummy-data";
-import HeaderSections from "./components/HeaderSections";
-import Feather from "@expo/vector-icons/Feather";
+import Colors from "./constants/colors";
 
 import {
   Poppins_100Thin,
@@ -28,14 +23,8 @@ import {
   Poppins_900Black,
   Poppins_900Black_Italic,
 } from "@expo-google-fonts/poppins";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import LogoTitle from "./components/LogoTitle";
-import BeforeTitleSection from "./components/BeforeTitleSection";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import BottomTabNavigatorSection from "./components/BottomTabNavigatorSection";
-import MainNavigator from "./navigations/MainNavigator";
-import TabNavigator from "./navigations/TabNavigator";
 import HomeStackNavigator from "./navigations/HomeStackNavigator";
 
 const Stack = createNativeStackNavigator();
@@ -46,7 +35,7 @@ export default function App() {
     color: Colors.black[300],
     size: 24,
     colors: {
-      background:Colors.white.null,
+      background: Colors.white.null,
     },
   };
 
@@ -75,13 +64,7 @@ export default function App() {
     // <SafeAreaView>
     <>
       <StatusBar style="dark" />
-      <HomeStackNavigator/>
-     
-
-
-
-      
-      
+      <HomeStackNavigator />
     </>
     //  </SafeAreaView>
   );
@@ -123,8 +106,7 @@ if (!loaded && !error) {
   "   </NavigationContainer>
 */
 
-
-    /* 
+/* 
     <NavigationContainer theme={AppTheme}>
         <Stack.Navigator>
           <Stack.Screen

@@ -6,12 +6,15 @@ import {
   ImageBackground,
   Pressable,
 } from "react-native";
-import React from "react";
+
 import Colors from "../constants/colors";
-import ProfilePictureSection from "./ProfilePictureSection";
-import Feather from "@expo/vector-icons/Feather";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { LikedContext } from "../store/context/liked-context";
+import { useContext, useLayoutEffect } from "react";
+import IconButtonSection from "./IconButtonSection";
 
 function EventCardSection({
+  id,
   title,
   profileImage,
   username,
@@ -20,6 +23,7 @@ function EventCardSection({
   fullCapacity,
   enrolled,
   onPress,
+
   description,
   date,
   hour,
@@ -31,6 +35,10 @@ function EventCardSection({
   const validCapacityPercentage = isNaN(capacityPercentage)
     ? 0
     : capacityPercentage;
+
+  function likeButtonHandler() {
+    console.log("Liked the event!");
+  }
 
   return (
     <View style={styles.eventOuterSection}>
@@ -83,7 +91,7 @@ function EventCardSection({
                     flexDirection: "row",
                   }}
                 >
-                  <Feather name="users" size={10} color={Colors.white.null} />
+                  <Ionicons name="people" size={10} color={Colors.white.null} />
                   <Text
                     style={{
                       fontFamily: "Poppins_700Bold",
@@ -99,21 +107,26 @@ function EventCardSection({
             </View>
           </ImageBackground>
         </View>
-        <Text style={styles.titleOuterSection}>{title}</Text>
+      </Pressable>
+      <Text style={styles.titleOuterSection}>{title}</Text>
 
-        <View style={styles.infoOuterSection}>
-          <View style={styles.infoInnerSection}>
-            <Image style={styles.profilePic} source={{ uri: profileImage }} />
-            <View style={styles.infoTextInner}>
-              <Text style={styles.usernameText}>{username}</Text>
-              <Text style={styles.daysReminderText}>{reminder} days left</Text>
-            </View>
-          </View>
-          <View style={styles.heartIcon}>
-            <Feather name="heart" size={24} color={Colors.black[300]} />
+      <View style={styles.infoOuterSection}>
+        <View style={styles.infoInnerSection}>
+          <Image style={styles.profilePic} source={{ uri: profileImage }} />
+          <View style={styles.infoTextInner}>
+            <Text style={styles.usernameText}>{username}</Text>
+            <Text style={styles.daysReminderText}>{reminder} days left</Text>
           </View>
         </View>
-      </Pressable>
+        <View style={styles.heartIcon}>
+          <IconButtonSection
+            name="heart-outline"
+            size={24}
+            color={Colors.black[300]}
+            onPress={likeButtonHandler}
+          />
+        </View>
+      </View>
     </View>
   );
 }

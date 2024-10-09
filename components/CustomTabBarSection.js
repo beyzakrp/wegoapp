@@ -1,13 +1,7 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import MainScreen from '../screens/Home/MainScreen';
-import MapScreen from '../screens/Map/MapScreen';
-import ShotScreen from '../screens/Shot/ShotScreen';
-import ChatScreen from '../screens/Chat/ChatScreen';
-import ProfileScreen from '../screens/Profile/ProfileScreen';
-import Feather from '@expo/vector-icons/Feather';
-
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 const Tab = createBottomTabNavigator();
 
 function CustomTabBarSection({ state, descriptors, navigation }) {
@@ -26,7 +20,7 @@ function CustomTabBarSection({ state, descriptors, navigation }) {
 
         const onPress = () => {
           const event = navigation.emit({
-            type: 'tabPress',
+            type: "tabPress",
             target: route.key,
             canPreventDefault: true,
           });
@@ -46,8 +40,11 @@ function CustomTabBarSection({ state, descriptors, navigation }) {
             onPress={onPress}
             style={styles.tabItem}
           >
-           
-            <Feather name={route.name} color={isFocused ? '#333333' : '#b0b0b0'} size={24}/>
+            <Ionicons
+              name={route.name}
+              color={isFocused ? "#333333" : "#b0b0b0"}
+              size={route.name == "play-outline" ? 28 : 24}
+            />
           </TouchableOpacity>
         );
       })}
@@ -55,23 +52,20 @@ function CustomTabBarSection({ state, descriptors, navigation }) {
   );
 }
 
-
-
 export default CustomTabBarSection;
 
 const styles = StyleSheet.create({
   tabBarContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#fff',
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#fff",
     paddingBottom: 20,
     paddingTop: 8,
   },
   tabItem: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 12,
-    paddingVertical: 12
-
+    paddingVertical: 12,
   },
 });
