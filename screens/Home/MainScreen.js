@@ -15,8 +15,12 @@ import AfterCardSection from "../../components/AfterCardSection";
 import BeforeCardSection from "../../components/BeforeCardSection";
 
 import IconButtonSection from "../../components/IconButtonSection";
+import { PlusButtonSection } from "../../components/PlusButtonSection";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 //const Stack = createNativeStackNavigator();
+
+//navigation = useNavigate();
 
 const deviceWidth = Dimensions.get("window").width;
 const paddingH = deviceWidth / 28;
@@ -24,6 +28,7 @@ const paddingH = deviceWidth / 28;
 function MainScreen({ navigation }) {
   function headerButtonPressHandler() {
     console.log("Pressed to the Upper bar");
+    navigation.navigate("Notification", {})
   }
   console.log(paddingH);
   const scrollY = useRef(new Animated.Value(0)).current;
@@ -100,6 +105,7 @@ function MainScreen({ navigation }) {
   function renderEventItem(itemData) {
     function pressHandler() {
       navigation.navigate("EventDetails", {
+        // {...itemData.item}
         eventId: itemData.item.id,
         eventTitle: itemData.item.title,
         eventProfileImg: itemData.item.profileImage,
@@ -118,7 +124,7 @@ function MainScreen({ navigation }) {
     return (
       <EventCardSection
         id={itemData.item.id}
-        title={itemData.item.title}
+        title={itemData.item.title} 
         profileImage={itemData.item.profileImage}
         eventImage={itemData.item.eventImage}
         username={itemData.item.username}
@@ -135,6 +141,7 @@ function MainScreen({ navigation }) {
   }
   return (
     <>
+    <GestureHandlerRootView>
       <ScrollView>
         <HeaderSections title={"Befores"} />
         <FlatList
@@ -164,6 +171,8 @@ function MainScreen({ navigation }) {
           nestedScrollEnabled={true}
         />
       </ScrollView>
+      <PlusButtonSection/>
+      </GestureHandlerRootView>
     </>
   );
 }

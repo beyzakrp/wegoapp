@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,6 +9,7 @@ import TabNavigator from './TabNavigator';
 import Colors from '../constants/colors';
 import { Provider } from 'react-redux';
 import {store} from '../store/redux/store';
+import NotificationScreen from '../screens/Notification/NotificationScreen';
 
 
 
@@ -38,6 +39,10 @@ const AppTheme = {
             <Stack.Screen name='EventDetails' component={EventDetailsScreen}/>
             <Stack.Screen name='BeforeDetails' component={BeforeDetailsScreen}/> 
             <Stack.Screen name='AfterDetails' component={AfterDetailsScreen}/>
+            <Stack.Screen name='Notification' component={NotificationScreen} options={{
+              
+              //presentation: 'modal'
+              }}/>
 
         </Stack.Navigator>
         </NavigationContainer>

@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View,  TouchableOpacity, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Colors from "../constants/colors";
 const Tab = createBottomTabNavigator();
 
 function CustomTabBarSection({ state, descriptors, navigation }) {
@@ -42,7 +43,7 @@ function CustomTabBarSection({ state, descriptors, navigation }) {
           >
             <Ionicons
               name={route.name}
-              color={isFocused ? "#333333" : "#b0b0b0"}
+              color={isFocused ? Colors.black.default : Colors.black[300]}
               size={route.name == "play-outline" ? 28 : 24}
             />
           </TouchableOpacity>
