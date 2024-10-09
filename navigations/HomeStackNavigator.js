@@ -7,13 +7,12 @@ import BeforeDetailsScreen from '../screens/Home/BeforeDetailsScreen';
 import AfterDetailsScreen from '../screens/Home/AfterDetailsScreen';
 import TabNavigator from './TabNavigator';
 import Colors from '../constants/colors';
-import DrawerNavigator from './DrawerNavigator';
-import LikedDrawerScreen from '../screens/Home/LikedDrawerScreen';
-import LikedContextProvider from '../store/context/liked-context';
+import { Provider } from 'react-redux';
+import {store} from '../store/redux/store';
 
 
 
-const Stack =createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 
 function HomeStackNavigator () {
@@ -28,8 +27,9 @@ const AppTheme = {
    }}
 
   return (
-  <LikedContextProvider>
-
+    <>
+    <Provider store={store}>
+  {/* <LikedContextProvider> */}
     <NavigationContainer theme={AppTheme}>
         <Stack.Navigator> 
           <Stack.Screen name='main' component={TabNavigator} options={{headerShown: false}}/>
@@ -41,8 +41,9 @@ const AppTheme = {
 
         </Stack.Navigator>
         </NavigationContainer>
-</LikedContextProvider>
-    
+    {/* </LikedContextProvider> */}
+    </Provider>
+    </>
   )
 }
 

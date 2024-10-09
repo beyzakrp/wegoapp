@@ -1,7 +1,7 @@
-import { StyleSheet, Text, Pressable } from "react-native";
+import { StyleSheet, Pressable } from "react-native";
 import React from "react";
-import Feather from "@expo/vector-icons/Feather";
-import Colors from "../constants/colors";
+
+
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 function IconButtonSection({ onPress, name, size, color }) {

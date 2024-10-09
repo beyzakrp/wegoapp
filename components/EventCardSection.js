@@ -6,12 +6,11 @@ import {
   ImageBackground,
   Pressable,
 } from "react-native";
-
 import Colors from "../constants/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { LikedContext } from "../store/context/liked-context";
-import { useContext, useLayoutEffect } from "react";
 import IconButtonSection from "./IconButtonSection";
+import { useDispatch, useSelector } from "react-redux";
+import { addLike, removeLike } from "../store/redux/likes";
 
 function EventCardSection({
   id,
@@ -36,8 +35,19 @@ function EventCardSection({
     ? 0
     : capacityPercentage;
 
-  function likeButtonHandler() {
+   const eventId = id;
+const dispatch = useDispatch();
+
+   const likeEventIds = useSelector( (state) => state.likeEvents.ids);
+   const eventIsLike = likeEventIds.includes(eventId);
+
+  function changeLikedStatusHandler() {
     console.log("Liked the event!");
+    if(eventIsLike) {
+      dispatch(removeLike({id: eventId}));
+    } else {
+      dispatch(addLike({id: eventId}));
+    }
   }
 
   return (
@@ -120,10 +130,10 @@ function EventCardSection({
         </View>
         <View style={styles.heartIcon}>
           <IconButtonSection
-            name="heart-outline"
+            name={eventIsLike ? "heart" : "heart-outline"}
             size={24}
-            color={Colors.black[300]}
-            onPress={likeButtonHandler}
+            color={eventIsLike ? Colors.pink.default : Colors.black[300]}
+            onPress={changeLikedStatusHandler}
           />
         </View>
       </View>

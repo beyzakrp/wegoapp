@@ -1,17 +1,10 @@
 import {
   StyleSheet,
-  Text,
-  TextInput,
   View,
-  SafeAreaView,
   ScrollView,
-  KeyboardAvoidingView,
   FlatList,
-  Button,
-  Pressable,
   Image,
   Animated,
-  SectionList,
   Dimensions,
 } from "react-native";
 import React, { useLayoutEffect, useRef } from "react";
@@ -119,6 +112,7 @@ function MainScreen({ navigation }) {
         eventEnrolled: itemData.item.enrolled,
         eventCapacity: itemData.item.fullCapacity,
       });
+
     }
 
     return (

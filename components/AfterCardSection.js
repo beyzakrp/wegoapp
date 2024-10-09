@@ -1,8 +1,6 @@
 import { StyleSheet, Text, View, Image, ImageBackground, Pressable } from 'react-native'
 import React from 'react'
 import  Colors  from '../constants/colors'
-import ProfilePictureSection from './ProfilePictureSection'
-import Feather from '@expo/vector-icons/Feather';
 import { LinearGradient } from 'expo-linear-gradient';
 
 function AfterCardSection ({title, profileImage, username, eventImage,onPress}){
