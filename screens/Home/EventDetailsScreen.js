@@ -4,9 +4,11 @@ import Colors from "/Users/beyzakarapicak/wgapp/constants/colors.js";
 import { Dimensions } from "react-native";
 import PrimaryButton from "/Users/beyzakarapicak/wgapp/components/PrimaryButton";
 import { Ionicons } from "@expo/vector-icons";
+import IconButtonSection from "../../components/IconButtonSection";
 
 function EventDetailsScreen({ route, navigation }) {
   const colorDetailsIcon = Colors.black[300];
+  console.log(route.params.isLike)
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -85,9 +87,9 @@ function EventDetailsScreen({ route, navigation }) {
               <Text style={styles.underIcon}>243</Text>
             </View>
             <View style={styles.heartIcon}>
-              <Ionicons
-                name="heart-outline"
-                size={24}
+              <IconButtonSection
+            name={route.params.isLike ? "heart" : "heart-outline"}
+            size={24}
                 color={Colors.black[300]}
               />
               <Text style={styles.underIcon}>243</Text>

@@ -2,12 +2,12 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Colors from "../constants/colors";
 
-function PrimaryButton({ children, onPress, buttonColor, buttonFontFamily }) {
+function PrimaryButton({ children, onPress, buttonColor, buttonFontFamily, verticalMargin }) {
   /*function pressHandler() {
         console.log('Pressed!');
     }*/
   return (
-    <View style={styles.buttonOuterContainer}>
+    <View style={[styles.buttonOuterContainer, { marginVertical: verticalMargin }]}>
       <Pressable
         style={({ pressed }) =>
           pressed
@@ -25,7 +25,7 @@ function PrimaryButton({ children, onPress, buttonColor, buttonFontFamily }) {
       </Pressable>
     </View>
   );
-}
+} 
 
 export default PrimaryButton;
 

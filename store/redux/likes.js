@@ -15,7 +15,25 @@ const likedEvent = createSlice({
   }
 });
 
+const likedBefore = createSlice({
+  name: "liked",
+  initialState: {
+    ids: [],
+  },
+  reducers: {
+    addLike: (state, action) => {
+        state.ids.push( action.payload.id);
+    },
+    removeLike: (state, action) => {
+        state.ids.splice(state.ids.indexOf(action.payload.id), 1);
+    },
+  }
+});
+
 export const addLike = likedEvent.actions.addLike;
 export const removeLike = likedEvent.actions.removeLike;
+
+export const addLikeBefore = likedBefore.actions.addLike;
+export const removeLikeBefore = likedBefore.actions.removeLike;
 
 export default likedEvent.reducer;

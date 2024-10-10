@@ -10,6 +10,7 @@ import Colors from '../constants/colors';
 import { Provider } from 'react-redux';
 import {store} from '../store/redux/store';
 import NotificationScreen from '../screens/Notification/NotificationScreen';
+import { CommentScreen } from '../screens/CommentScreen';
 
 
 
@@ -43,6 +44,8 @@ const AppTheme = {
               
               //presentation: 'modal'
               }}/>
+            <Stack.Screen name='Comments' component={CommentScreen} options={{ presentation: 'modal'}}/>
+
 
         </Stack.Navigator>
         </NavigationContainer>

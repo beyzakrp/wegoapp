@@ -9,21 +9,21 @@ const DateInputSection = () => {
       <View style={styles.dateInputInnerContainer}>
         <InputSection 
         maxDigits={2}
-        inputKeyboarType={'number-pad'}
+        inputKeyboardType={'number-pad'}
         nameTag={'xx'}
         >Day</InputSection>
       </View>
       <View style={styles.dateInputInnerContainer}>
         <InputSection 
         maxDigits={10}
-        inputKeyboarType={'default'}
+        inputKeyboardType={'default'}
         nameTag={'October'}
         >Month</InputSection>
       </View>
       <View style={styles.dateInputInnerContainer}>
         <InputSection 
         maxDigits={4}
-        inputKeyboarType={'number-pad'}
+        inputKeyboardType={'number-pad'}
         nameTag={'xxxx'}
         >Year</InputSection>
       </View>

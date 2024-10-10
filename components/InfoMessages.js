@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Colors from '../constants/colors'
 
 function InfoMessages({children}){
   return (
@@ -17,10 +18,10 @@ const styles = StyleSheet.create({
     },
 
     infoInnerContainer: {
-        color: '#b0b0b0',
+        color: Colors.black[300],
         alignItems: 'flex-start',
         justifyContent: 'space-between',
         fontFamily: 'Poppins_400Regular',
-        fontSize: 15,
+        fontSize: 14,
     }
 })

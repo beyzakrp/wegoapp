@@ -5,10 +5,28 @@ import BeforeTitleSection from "../../components/BeforeTitleSection";
 import IconButtonSection from "../../components/IconButtonSection";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { addLikeBefore, removeLikeBefore } from "../../store/redux/likes";
+
 
 function BeforeDetailsScreen({ route, navigation }) {
+
+  const beforeId = route.params.id;
+  const likeBeforeId = useSelector((state) => state.likeEvents.ids);
+  const beforeIsLike = likeBeforeId.includes(beforeId);
+  const dispatch = useDispatch();
+
+  function changeLikedStatusHandler(){
+    if(beforeIsLike){
+        dispatch(removeLikeBefore({id: beforeId}))
+    }
+    else {
+      dispatch(addLikeBefore({id:beforeId}))
+    }
+  }
   function headerButtonPressHandler() {
     console.log("Pressed to the Upper bar");
+    navigation.goBack();
   }
 
   function heartButtonPressHandler() {
@@ -17,6 +35,7 @@ function BeforeDetailsScreen({ route, navigation }) {
 
   function commentsButtonPressHandler() {
     console.log("Pressed to the Comments bar");
+    navigation.navigate("Comments", {});
   }
 
   useLayoutEffect(() => {
@@ -70,12 +89,12 @@ function BeforeDetailsScreen({ route, navigation }) {
           </View>
           <View style={styles.heartIcon}>
             <IconButtonSection
-              name="heart-outline"
+              name={beforeIsLike ? "heart" :"heart-outline"}
               size={32}
-              color={Colors.white.null}
-              onPress={heartButtonPressHandler}
+              color={beforeIsLike ? Colors.pink.default : Colors.white.null}
+              onPress={changeLikedStatusHandler}
             />
-            <Text style={styles.underIcon}>243</Text>
+            <Text style={styles.underIcon}>{beforeIsLike && (<Text>342</Text>)}{!beforeIsLike && (<Text>341</Text>)}</Text>
           </View>
         </View>
       </View>

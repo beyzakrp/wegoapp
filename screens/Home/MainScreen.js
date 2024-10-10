@@ -117,6 +117,7 @@ function MainScreen({ navigation }) {
         eventUsername: itemData.item.username,
         eventEnrolled: itemData.item.enrolled,
         eventCapacity: itemData.item.fullCapacity,
+        eventIsLike: itemData.item.isLike
       });
 
     }
@@ -136,6 +137,7 @@ function MainScreen({ navigation }) {
         hour={itemData.item.hour}
         date={itemData.item.date}
         location={itemData.item.location}
+        isLike={itemData.item.isLike}
       />
     );
   }

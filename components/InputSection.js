@@ -1,9 +1,12 @@
 import { StyleSheet, TextInput, View, Text } from 'react-native'
 import {React}  from 'react'
 import Colors from '../constants/colors'
+import InfoMessages from './InfoMessages';
 
 
-function InputSection({children ,nameTag, maxDigits, inputKeyboarType}) {
+function InputSection({children ,maxDigits,  inputKeyboardType, nameTag, isInfoMessage, infoMessage, contextType}) {
+    // textInputConfig
+    //{...textInputConfig}
  /* const [enteredNumber, setEnteredNumber] = useState('');
    function numberInputHandler(enteredNumber){
         setEnteredNumber(enteredSet);
@@ -12,30 +15,41 @@ function InputSection({children ,nameTag, maxDigits, inputKeyboarType}) {
         */
 
     return (
+        <>
     <View style={styles.inputOuterContainer}>
         <TextInput 
     //value={}
     //onChangeText={numberInputHandler}
-    style={styles.inputInnerContainer}
+   style={styles.inputInnerContainer}
     maxLength={maxDigits} 
-    keyboardType= {inputKeyboarType}
+    keyboardType ={inputKeyboardType}
     autoCapitalize='none'
     autoCorrect={false}
     placeholder={nameTag}
+    textContentType={contextType}
     />
         <View style={styles.nameTagOuterContainer}>
             <Text style={styles.nameTagInnerContainer}>{children}</Text>
             </View>
 
+           
+        
 </View>
+ <View style={styles.infoMessageContainer}>{isInfoMessage && ( 
+    <InfoMessages children={infoMessage}/>
+)}</View>
+</>
   )
 }
 
 export default InputSection;
 
 const styles = StyleSheet.create({
+    infoMessageContainer: {
+       
+    },
     nameTagOuterContainer: {
-        marginTop: -75,
+        marginTop: -80,
         marginLeft: 1,
         alignItems: 'flex-start',
         justifyContent: 'center',
@@ -46,6 +60,7 @@ const styles = StyleSheet.create({
         paddingRight: 5,
         fontFamily: 'Poppins_400Regular',
         fontSize: 18,
+        color: Colors.black[700]
 
         
        /* shadowColor: '#000',       // Gölgenin rengi
@@ -78,7 +93,7 @@ const styles = StyleSheet.create({
     inputInnerContainer: {
         height: 50,
         fontSize: 18,
-        borderColor: Colors.black.default,
+        borderColor: Colors.black[300],
         borderWidth: 0.5,
         borderRadius: 16,
         color: Colors.black.default,

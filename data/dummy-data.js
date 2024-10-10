@@ -1,7 +1,52 @@
 import After from "../models/after";
 import Before from "../models/before";
+import { Chat } from "../models/chat";
 import Event from "../models/event";
 import User from "../models/user";
+
+
+export const CHATS = [
+  new Chat(
+    1,
+    "Nature Explorer",
+    "https://images.unsplash.com/photo-1525864227164-45ecff3c7151?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5hdHVyYSUyMHdhbGt8ZW58MHx8MHx8fDA%3D",
+    "John Alex: We are rolling this time 🌳 Please everyone prepare for the nature!!!! ",
+    "14:50",
+    1,
+    2,
+    1,
+  ),
+  new Chat(
+    2,
+    "Barbeque Party",
+    "https://images.unsplash.com/photo-1495988840227-a5986a3be9fc?q=80&w=3644&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Hey everyone! There will be lots of good food, drinks, and of course",
+    "19:28",
+    0,
+    6,
+    5,
+  ),
+  new Chat(
+    3,
+    "Football Night",
+    "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Hey team! ⚽🍕🍻 I'm hosting a football watching night this wednesday ",
+    "15:01",
+    2,
+    0,
+    44,
+  ),
+  new Chat(
+    4,
+    "Pool Party",
+    "https://images.unsplash.com/photo-1562866470-3774249bef10?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9vbCUyMHBhcnR5fGVufDB8fDB8fHww",
+    "I'm hosting a pool party tonight  ",
+    "10:21",
+    5,
+    3,
+    0,
+  )
+];
 
 export const BEFORES = [
   new Before(
@@ -76,7 +121,8 @@ export const EVENTS = [
     "Hey everyone! 🌞🍖🔥\nIm throwing a barbecue party and I d love for you all to join! There will be lots of good food, drinks, and of course, great company. 🥩🍔🍻",
     "13:00",
     "September 7",
-    "Beykoz"
+    "Beykoz",
+  
   ),
 
   new Event(

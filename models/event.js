@@ -13,6 +13,7 @@
         date,
         location,
         participants,
+        isLike,
         
 
     ) {
@@ -29,6 +30,7 @@
         this.date = date;
         this.location = location;
         this.participants = participants;
+        this.isLike = isLike;
 
     }
  }

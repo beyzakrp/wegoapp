@@ -20,14 +20,19 @@ const Colors ={
     },
     black: {
       gradient: "rgba(51, 51, 51, 0)",
+      100:          "#e7e7e7",
       200:        '#f2f2f2',
       300:        '#b0b0b0',
       400:         "#888888",
+      500: "#6d6d6d",
+      600: "#4f4f4f",
+      700: '#454545',
       default:     "#333333",
       null:        '#000000',
     },
     white: {
       deafult:     "#f8f8f8",
+      
       200:         "#dcdcdc",
       null: "#ffffff",
       empty: 'rgba(0,0,0,1)',

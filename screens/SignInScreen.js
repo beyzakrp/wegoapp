@@ -12,24 +12,10 @@ import EventGridTile from '../components/EventGridTile';
 
 function SignInScreen () {
   return (
-    <ScrollView style={styles.screen}>
-        <KeyboardAvoidingView behavior='position'>
-    <View style={styles.screen}>
-        <EventGridTile></EventGridTile>
-    <InputSection nameTag={"Maximum 12 digits allowed!"} maxDigits={3}>Password</InputSection>
-    <InfoMessages>If you have a mail address from education, please type that one!</InfoMessages>
-     <InputSection children='E-mail' nameTag="example@edu.tr"/>
-     <DateInputSection></DateInputSection>
-     <ProfilePictureSection profilePictureAddress={require('../assets/images/defaultProfilePicture.jpg')} ></ProfilePictureSection>
-    <CoverPictureSection></CoverPictureSection>
-      <PrimaryButton>Reset</PrimaryButton>
-      <PrimaryButton>Sign In</PrimaryButton>
-      <IconButtonSection></IconButtonSection>
-      <InputSection children='Username' nameTag={'@example'} />
-      <EventCardSection></EventCardSection>
-    </View>
-    </KeyboardAvoidingView>
-    </ScrollView>
+    <SafeAreaView>
+
+    </SafeAreaView>
+    
   )
 }
 

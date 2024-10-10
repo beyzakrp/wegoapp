@@ -22,6 +22,7 @@ function EventCardSection({
   fullCapacity,
   enrolled,
   onPress,
+  isLike,
 
   description,
   date,
@@ -40,9 +41,11 @@ const dispatch = useDispatch();
 
    const likeEventIds = useSelector( (state) => state.likeEvents.ids);
    const eventIsLike = likeEventIds.includes(eventId);
+  
 
   function changeLikedStatusHandler() {
     console.log("Liked the event!");
+    isLike = !!eventIsLike;
     if(eventIsLike) {
       dispatch(removeLike({id: eventId}));
     } else {
@@ -193,6 +196,7 @@ const styles = StyleSheet.create({
   usernameText: {
     fontFamily: "Poppins_500Medium",
     fontSize: 11,
+    color: Colors.black.default
   },
   daysReminderText: {
     fontFamily: "Poppins_400Regular",
