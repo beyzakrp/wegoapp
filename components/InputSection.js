@@ -4,7 +4,7 @@ import Colors from '../constants/colors'
 import InfoMessages from './InfoMessages';
 
 
-function InputSection({children ,maxDigits,  inputKeyboardType, nameTag, isInfoMessage, infoMessage, contextType}) {
+function InputSection({children ,maxDigits,  inputKeyboardType, nameTag, isInfoMessage, infoMessage, contextType, onChangeText, value}) {
     // textInputConfig
     //{...textInputConfig}
  /* const [enteredNumber, setEnteredNumber] = useState('');
@@ -27,6 +27,8 @@ function InputSection({children ,maxDigits,  inputKeyboardType, nameTag, isInfoM
     autoCorrect={false}
     placeholder={nameTag}
     textContentType={contextType}
+    onChangeText={onChangeText}
+    value={value}
     />
         <View style={styles.nameTagOuterContainer}>
             <Text style={styles.nameTagInnerContainer}>{children}</Text>
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.white.null,
         paddingRight: 5,
         fontFamily: 'Poppins_400Regular',
-        fontSize: 18,
+        fontSize: 15,
         color: Colors.black[700]
 
         

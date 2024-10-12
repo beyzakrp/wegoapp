@@ -16,7 +16,7 @@ import { CommentScreen } from '../screens/CommentScreen';
 
 const Stack = createNativeStackNavigator();
 
-
+//AuthenticatedStack
 function HomeStackNavigator () {
 
 
@@ -32,8 +32,9 @@ const AppTheme = {
     <>
     <Provider store={store}>
   {/* <LikedContextProvider> */}
-    <NavigationContainer theme={AppTheme}>
+    {/*<NavigationContainer theme={AppTheme}>*/}
         <Stack.Navigator> 
+          
           <Stack.Screen name='main' component={TabNavigator} options={{headerShown: false}}/>
 
 
@@ -48,7 +49,7 @@ const AppTheme = {
 
 
         </Stack.Navigator>
-        </NavigationContainer>
+        {/*</NavigationContainer>*/}
     {/* </LikedContextProvider> */}
     </Provider>
     </>

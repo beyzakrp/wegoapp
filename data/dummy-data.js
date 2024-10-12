@@ -24,7 +24,8 @@ export const CHATS = [
     "19:28",
     0,
     6,
-    5,
+    9,
+    0,
   ),
   new Chat(
     3,

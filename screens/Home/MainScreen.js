@@ -18,6 +18,7 @@ import IconButtonSection from "../../components/IconButtonSection";
 import { PlusButtonSection } from "../../components/PlusButtonSection";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
+
 //const Stack = createNativeStackNavigator();
 
 //navigation = useNavigate();

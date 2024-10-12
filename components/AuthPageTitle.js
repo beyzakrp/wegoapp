@@ -4,11 +4,11 @@ import { Ionicons } from '@expo/vector-icons'
 import IconButtonSection from './IconButtonSection'
 import LogoTitle from './LogoTitle'
 
-export function AuthPageTitle  ()  {
+export function AuthPageTitle  ({onPress})  {
   return (
     <View style={styles.titleOuter}>
       <IconButtonSection name={"chevron-back-outline"}
-      size={32}/>
+      size={32} onPress={onPress} />
       <View style={{
         marginHorizontal: "33.5%",
         alignItems: 'center',

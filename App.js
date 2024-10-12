@@ -26,6 +26,7 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeStackNavigator from "./navigations/HomeStackNavigator";
+import MainNavigator from "./navigations/MainNavigator";
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -64,7 +65,7 @@ export default function App() {
     // <SafeAreaView>
     <>
       <StatusBar style="dark" />
-      <HomeStackNavigator />
+      <MainNavigator />
     </>
     //  </SafeAreaView>
   );

@@ -4,8 +4,13 @@ import { NavigationContainer } from '@react-navigation/native'
 import TabNavigator from './TabNavigator'
 import HomeStackNavigator from './HomeStackNavigator'
 import Colors from '../constants/colors'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import IntroOneScreen from '../screens/IntroOneScreen'
+import IntroTwoScreen from '../screens/IntroTwoScreen'
+import AuthNavigator from './AuthNavigator'
 
 
+const Stack= createNativeStackNavigator();
 
 const AppTheme = {
    // color: Colors.black[300],
@@ -17,8 +22,15 @@ function MainNavigator (){
     
   return (
     <>
-<NavigationContainer >
-    <HomeStackNavigator/>
+<NavigationContainer theme={AppTheme}>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name='IntroOne' component={IntroOneScreen}/>
+      <Stack.Screen name='IntroTwo' component={IntroTwoScreen}/>
+      <Stack.Screen name='Auth' component={AuthNavigator}/>
+      <Stack.Screen name='Home' component={HomeStackNavigator}/>
+
+
+    </Stack.Navigator>
 </NavigationContainer>
 
 
