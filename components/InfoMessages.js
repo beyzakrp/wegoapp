@@ -3,9 +3,10 @@ import React from 'react'
 import Colors from '../constants/colors'
 
 function InfoMessages({children}){
+  const isInvalid = 0;
   return (
     <View style={styles.infoOuterContainer}>
-      <Text style={styles.infoInnerContainer}>{children}</Text>
+      <Text style={[styles.infoInnerContainer, isInvalid && styles.errorMessage]}>{children}</Text>
     </View>
   )
 }
@@ -13,8 +14,12 @@ function InfoMessages({children}){
 export default InfoMessages
 
 const styles = StyleSheet.create({
+  errorMessage:{
+    color: Colors.error.primary,
+  },
     infoOuterContainer: {
         marginHorizontal: 16,
+        paddingBottom: 16,
     },
 
     infoInnerContainer: {
@@ -22,6 +27,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'space-between',
         fontFamily: 'Poppins_400Regular',
-        fontSize: 14,
+        fontSize: 13,
     }
 })

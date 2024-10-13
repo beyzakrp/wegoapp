@@ -1,22 +1,44 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {React, useState} from 'react'
 import { useNavigation } from '@react-navigation/native'
+import AuthForm from './AuthForm';
 
-export function AuthContent ({isLogin, onAuthhenticate}) {
+export default function AuthContent ({ onAuthhenticate}) {
     const navigation = useNavigation();
 
-    const [credentialIsInvalid, setCredentialsInvalid] = useState({
-        email: false,
-        phoneNumber: false,
-        name: false,
-        surname: false,
-        username: false,
+  const [credentialIsValid, setCredentialIsValid] = useState({
+    email: false,
+    password: false,
+    confirmPassword: false,
+  });
 
+  function submitHandler(credentials){
+    let {email, password,passwordConfirm } = credentials;
 
-    });
+    email = email.trim();
+    password =password.trim();
+
+    const emailIsValid = email.includes('@');
+    const passwordIsValid = password.length > 6;
+    const passwordsAreEqual = (password === confirmPassword);
+
+    if(!emailIsValid ||!passwordIsValid) {
+      Alert.alert('Invalid input', 'Please check your entered credentials.');
+      setCredentialIsValid({
+        email: !emailIsValid,
+        password: !passwordIsValid,
+        confirmPassword: !passwordIsValid || !passwordsAreEqual,
+      });
+      return;
+    }
+    onAuthenticate({email, password});
+  }
+  
   return (
     <View>
-      <AuthContent/>
+      <AuthForm
+      onSubmit={submitHandler}
+      credentialIsInvalid={credentialIsValid}/>
     </View>
   )
 }

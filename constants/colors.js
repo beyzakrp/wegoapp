@@ -1,4 +1,8 @@
 const Colors ={
+  error:{ 
+    primary: "#ff073a",
+    light: "#FF7171",
+  },
     primary: '#00daf0',
     blue: {
       default:    "#00daf0",
