@@ -1,14 +1,37 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import AuthContent from "./AuthContent";
+import { createUser } from "../../utils/auth";
+import { useContext, useState } from "react";
+import LoadingOverlay from "../../components/LoadingOverlay";
+import { AuthContext } from "../../store/context/auth-context";
 
 
 
-export default function SignUpScreen({ 
+export default function SignUpScreen(){
+  const [ isAuthenticating, setIsAuthenticating] =useState(false);
+
+  const authCtx = useContext(AuthContext);
+
+  async function signupHandler({email, password}) {
+    setIsAuthenticating(true);
+    try {
+      const token = await createUser(email, password);
+      authCtx.authenticate(token);
+    } catch (error) {
+      Alert.alert("Authentication Failed", "Couldn't create user. Please check your input...")
+    }
+    setIsAuthenticating(false);
+    
+  }
+  if( isAuthenticating ){
+    return <LoadingOverlay />
+  }
+
    //onSubmit, credentialIsInvalid 
-  }) {
+   
     return (
     <SafeAreaView>
-      <AuthContent/>
+      <AuthContent onAuthenticate={signupHandler}/>
     </SafeAreaView>
     )
   }

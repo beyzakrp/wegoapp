@@ -10,7 +10,6 @@ function InputSection({
   nameTag,
   isInfoMessage,
   infoMessage,
-  contextType,
   onUpdateValue,
   value,
   isInvalid,
@@ -27,23 +26,34 @@ function InputSection({
 
   return (
     <>
-      <View style={[styles.inputOuterContainer, isInvalid && styles.inputOuterInvalid]}>
+      <View
+        style={[
+          styles.inputOuterContainer,
+          //isInvalid && styles.inputOuterInvalid
+        ]}
+      >
         <TextInput
           //value={}
           //onUpdateValue={numberInputHandler}
           style={[styles.inputInnerContainer, isInvalid && styles.inputInvalid]}
           maxLength={maxDigits}
           keyboardType={inputKeyboardType}
-          autoCapitalize="none"
+          autoCapitalize={false}
           autoCorrect={false}
           placeholder={nameTag}
-          textContentType={contextType}
-          onUpdateValue={onUpdateValue}
+          onChangeText={onUpdateValue}
           value={value}
           secureTextEntry={secure}
         />
         <View style={styles.nameTagOuterContainer}>
-          <Text style={styles.nameTagInnerContainer}>{children}</Text>
+          <Text
+            style={[
+              styles.nameTagInnerContainer,
+              isInvalid && styles.infoInvalid,
+            ]}
+          >
+            {children}
+          </Text>
         </View>
       </View>
       <View style={styles.infoMessageContainer}>
@@ -56,9 +66,12 @@ function InputSection({
 export default InputSection;
 
 const styles = StyleSheet.create({
-    inputInvalid: {
-        borderColor: Colors.error.primary,
-    },
+  infoInvalid: {
+    color: Colors.error.primary,
+  },
+  inputInvalid: {
+    borderColor: Colors.error.primary,
+  },
   infoMessageContainer: {},
   nameTagOuterContainer: {
     marginTop: -80,

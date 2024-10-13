@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
 import { useFonts } from "expo-font";
 import Colors from "./constants/colors";
 
@@ -25,7 +25,6 @@ import {
 } from "@expo-google-fonts/poppins";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeStackNavigator from "./navigations/HomeStackNavigator";
 import MainNavigator from "./navigations/MainNavigator";
 
 const Stack = createNativeStackNavigator();

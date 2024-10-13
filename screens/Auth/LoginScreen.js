@@ -1,28 +1,46 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import LinkButton from '../../components/LinkButton'
+import { StyleSheet} from 'react-native'
+import {React, useContext, useState} from 'react'
+
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { AuthPageTitle } from '../../components/AuthPageTitle'
 import { AuthPageSubtitle } from '../../components/AuthPageSubtitle'
-import InputSection from '../../components/InputSection'
-import PrimaryButton from "../../components/PrimaryButton";
-import Colors from '../../constants/colors'
-import { useNavigation } from '@react-navigation/native'
+
+import AuthContent from './AuthContent'
+import LoadingOverlay from '../../components/LoadingOverlay'
+import { login } from '../../utils/auth'
+import { AuthContext } from '../../store/context/auth-context'
 
 
 
-export default function LoginScreen ({navigation})  {
+export default function LoginScreen ()  {
 
-  function backPressHandler(){
-    navigation.goBack();
-}
-  function forgotPasswordHandler(){
-    navigation.navigate("LoginForgot");
+  const [ isAuthenticating, setIsAuthenticating] =useState(false);
+
+  const authCtx = useContext(AuthContext);
+
+  async function loginHandler({email, password}) {
+    setIsAuthenticating(true);
+    try {
+      const token = await login(email, password);
+      authCtx.authenticate(token);
+    } catch (error) {
+      Alert.alert('Authenticate Failed', "Please try again! Something went wrong...")
+    }
+
+    setIsAuthenticating(false);
+    
+    
   }
+  console.log("isAuthenticating", isAuthenticating)
+  if( isAuthenticating ){
+    return <LoadingOverlay loadingMessage={"Logging you in..."}/>;
+  }
+ 
   return (
    
     <SafeAreaView>
-        <AuthPageTitle onPress={backPressHandler}/>
+      <AuthContent isLogin onAuthenticate={loginHandler}/>
+     {/*   <AuthPageTitle onPress={backPressHandler}/>
     <AuthPageSubtitle children={"Sign In"}/>
     <InputSection
         children={"E-mail"}
@@ -39,9 +57,6 @@ export default function LoginScreen ({navigation})  {
         
       />
 
-    <View style={{flexDirection:'row', justifyContent: 'flex-end', paddingHorizontal: '5%', paddingVertical: '1%'}}>
-            <LinkButton linkText={"Forgot Password?"} onPress={forgotPasswordHandler} />
-    </View>
 
 
     <PrimaryButton
@@ -50,7 +65,7 @@ export default function LoginScreen ({navigation})  {
         buttonFontFamily={"Poppins_700Bold"}
         verticalMargin={"8%"}
        // onPress={}
-      />
+  />*/}
     </SafeAreaView>
   )
 }
