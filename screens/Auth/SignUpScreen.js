@@ -5,39 +5,38 @@ import { useContext, useState } from "react";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import { AuthContext } from "../../store/context/auth-context";
 
-
-
-export default function SignUpScreen(){
-  const [ isAuthenticating, setIsAuthenticating] =useState(false);
+export default function SignUpScreen() {
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
 
   const authCtx = useContext(AuthContext);
 
-  async function signupHandler({email, password}) {
+  async function signupHandler({ email, password }) {
     setIsAuthenticating(true);
     try {
       const token = await createUser(email, password);
       authCtx.authenticate(token);
     } catch (error) {
-      Alert.alert("Authentication Failed", "Couldn't create user. Please check your input...")
+      Alert.alert(
+        "Authentication Failed",
+        "Couldn't create user. Please check your input..."
+      );
+      setIsAuthenticating(false);
     }
-    setIsAuthenticating(false);
-    
   }
-  if( isAuthenticating ){
-    return <LoadingOverlay />
+  if (isAuthenticating) {
+    return <LoadingOverlay />;
   }
 
-   //onSubmit, credentialIsInvalid 
-   
-    return (
+  //onSubmit, credentialIsInvalid
+
+  return (
     <SafeAreaView>
-      <AuthContent onAuthenticate={signupHandler}/>
+      <AuthContent onAuthenticate={signupHandler} />
     </SafeAreaView>
-    )
-  }
+  );
+}
 
-  
-    /*
+/*
   const navigation = useNavigation();
 
   const [enteredEmail, setEnteredEmail] = useState('');

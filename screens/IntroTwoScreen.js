@@ -16,7 +16,7 @@ const deviceHeigth = Dimensions.get("window").height;
 
 export default function IntroTwoScreen({ navigation }) {
   function pressHandler() {
-    navigation.navigate("Auth");
+    navigation.navigate("SignupScreen");
   }
   return (
     <View

@@ -6,9 +6,7 @@ import { SignUpSectionProfileInfo } from '../Auth/SignUpScreen'
 
 const ShotScreen = () => {
   return (
-    <SafeAreaView>
-    <SignUpSectionProfileInfo/>
-    </SafeAreaView>
+    <Text>hgfhdf</Text>
   )
 }
 

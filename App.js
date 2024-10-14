@@ -26,6 +26,10 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MainNavigator from "./navigations/MainNavigator";
+import AuthContextProvider, { AuthContext } from "./store/context/auth-context";
+import { useContext, useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import LoadingOverlay from "./components/LoadingOverlay";
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -59,85 +63,38 @@ export default function App() {
     Poppins_900Black,
     Poppins_900Black_Italic,
   });
-
+ 
   return (
     // <SafeAreaView>
     <>
       <StatusBar style="dark" />
-      <MainNavigator />
+      <AuthContextProvider>
+        <Root/>
+      </AuthContextProvider>
     </>
     //  </SafeAreaView>
   );
 }
+
+function Root(){
+  const [isTryingLogin, setIsTryingLogin] = useState(true);
+  const authCtx = useContext(AuthContext);
+
+  useEffect(() => {
+    async function fetchToken() {
+        const storedToken = await AsyncStorage.getItem('token');
+        if(storedToken) {
+            authCtx.authenticate(storedToken);
+        }
+        setIsTryingLogin(false);
+    }
+    fetchToken();
+  }, []);
+
+  if(isTryingLogin){
+    return <LoadingOverlay/>
+  }
+  return <MainNavigator/>;
+}
 const styles = StyleSheet.create({});
 
-// SplashScreen.preventAutoHideAsync();
-
-/*
-  const[loaded, error] =  useFonts({
-      "p-black": require("./assets/fonts/proximanova-black.otf"),
-      "p-bold": require("./assets/fonts/proximanova-bold.otf"),
-      "p-extrabold": require("./assets/fonts/proximanova-extrabold.otf"),
-      "p-light": require("./assets/fonts/proximanova-light.otf"),
-      "p-medium": require("./assets/fonts/proximanova-medium.otf"),
-      "p-regular": require("./assets/fonts/proximanova-regular.otf"),
-      "p-semibold": require("./assets/fonts/proximanova-semibold.otf"),
-      "p-thin": require("./assets/fonts/proximanova-thin.otf"),
-    });
-*/
-
-/*useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
-    
-  }
-}, [loaded, error]);
-
-if (!loaded && !error) {
-  return null;
-}
-
-<NavigationContainer>
-        <BottomTab.Navigator>
-            <BottomTab.Screen
-            name="Main"
-            component={MainScreen}/>
-        </BottomTab.Navigator>
-  "   </NavigationContainer>
-*/
-
-/* 
-    <NavigationContainer theme={AppTheme}>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="MainScreen"
-            component={MainScreen}
-            options={{
-              //headerShown: false,
-              
-            }}
-        
-          />
-
-          <Stack.Screen
-            name="EventDetails"
-            component={EventDetailsScreen}
-            options={{  
-              //headerTitle: (props) => <LogoTitle {...props} />,
-              //headerShadowVisible: false ,
-             // headerStyle: {},
-            }}
-          />
-          <Stack.Screen
-            name="BeforeDetails"
-            component={BeforeDetailsScreen}
-            options={{
-              //headerTitle:(props)=> <BeforeTitleSection {...props}/>,
-              //headerStyle: {
-              //backgroundColor: "rgba(0,0,0,1)",}
-            }}
-          />
-
-        </Stack.Navigator>
-      </NavigationContainer>
-    */

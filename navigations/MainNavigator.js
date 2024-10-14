@@ -1,13 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet} from 'react-native'
+import React, { useContext } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import HomeStackNavigator from './HomeStackNavigator'
 import Colors from '../constants/colors'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import IntroOneScreen from '../screens/IntroOneScreen'
-import IntroTwoScreen from '../screens/IntroTwoScreen'
-import AuthNavigator from './AuthNavigator'
-import  AuthContextProvider  from '../store/context/auth-context'
+
+import AuthNavigator, { AuthenticatedStack } from './AuthNavigator'
+import { AuthContext }  from '../store/context/auth-context'
 
 
 const Stack= createNativeStackNavigator();
@@ -19,21 +17,17 @@ const AppTheme = {
       background:Colors.white.null,
     }}
 function MainNavigator (){
+  const authCtx = useContext(AuthContext);
     
   return (
     <>
-    <AuthContextProvider>
+
 <NavigationContainer theme={AppTheme}>
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name='IntroOne' component={IntroOneScreen}/>
-      <Stack.Screen name='IntroTwo' component={IntroTwoScreen}/>
-      <Stack.Screen name='Auth' component={AuthNavigator}/>
-      <Stack.Screen name='Home' component={HomeStackNavigator}/>
-
-
-    </Stack.Navigator>
+  {!authCtx.isAuthenticated && <AuthNavigator/>}
+  {authCtx.isAuthenticated && <AuthenticatedStack/>}
+   
 </NavigationContainer>
-</AuthContextProvider>
+
 
 </>
   )
@@ -42,3 +36,16 @@ function MainNavigator (){
 export default MainNavigator
 
 const styles = StyleSheet.create({})
+
+/*
+ <Stack.Navigator screenOptions={{headerShown: false}}>
+    
+      <Stack.Screen name='IntroOne' component={IntroOneScreen}/>
+      <Stack.Screen name='IntroTwo' component={IntroTwoScreen}/>
+      
+      <Stack.Screen name='Auth' component={AuthNavigator}/>
+      <Stack.Screen name='Home' component={HomeStackNavigator}/>
+
+
+    </Stack.Navigator>
+*/
