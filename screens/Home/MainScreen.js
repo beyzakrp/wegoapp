@@ -52,7 +52,7 @@ function MainScreen({ navigation }) {
         return (
           <Image
             style={[{ width: 75, height: 24 }]}
-            source={require("/Users/beyzakarapicak/wgapp/assets/images/wegoBlackLogo.png")}
+            source={require("../../assets/images/wegoBlackLogo.png")}
           />
         );
       },

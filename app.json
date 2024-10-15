@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "wgapp",
+    "name": "Wego Social",
     "slug": "wgapp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -12,19 +12,28 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "buildNumber": "1.0.0",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wegoofficial.wegoapp"
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.wegoofficial.wegoapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "1d586176-44ab-4f45-a25b-77c234d61c54"
+      }
+    }
   }
 }

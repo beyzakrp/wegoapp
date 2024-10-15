@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import React, { useLayoutEffect } from "react";
-import Colors from "/Users/beyzakarapicak/wgapp/constants/colors.js";
+import Colors from "../../constants/colors";
 import { Dimensions } from "react-native";
-import PrimaryButton from "/Users/beyzakarapicak/wgapp/components/PrimaryButton";
+import PrimaryButton from "../../components/PrimaryButton";
 import { Ionicons } from "@expo/vector-icons";
 import IconButtonSection from "../../components/IconButtonSection";
 
@@ -16,7 +16,7 @@ function EventDetailsScreen({ route, navigation }) {
         return (
           <Image
             style={[{ width: 75, height: 24 }]}
-            source={require("/Users/beyzakarapicak/wgapp/assets/images/wegoBlackLogo.png")}
+            source={require("../../assets/images/wegoBlackLogo.png")}
           />
         );
       },
