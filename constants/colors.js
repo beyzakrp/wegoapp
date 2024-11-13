@@ -36,8 +36,9 @@ const Colors ={
     },
     white: {
       deafult:     "#f8f8f8",
-      
+      100: '#f5f5f5',
       200:         "#dcdcdc",
+      300: '#d1d1d1',
       null: "#ffffff",
       empty: 'rgba(0,0,0,1)',
     },

@@ -82,8 +82,8 @@ export function ProfileScreen() {
             alignItems: "center",
           }}
         >
-          <Text>
-            Descriptionfndjklvlnsdfkjnvkjsfnvkjsndjknlkfjvfvdfvdfsvsffsdvlkdfsvjndfskjvnkjfnvkjnfdskjvs
+          <Text style={{ fontFamily: "Poppins_400Regular"}}>
+            ITU - Astronautical Engineering
           </Text>
         </View>
       </SafeAreaView>

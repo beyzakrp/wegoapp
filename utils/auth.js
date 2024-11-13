@@ -20,3 +20,9 @@ export  function login(email, password) {
 export  function createUser(email, password) {
   return authenticate("signUp", email, password);
 }
+
+export function createUserInfo (email, password){
+  
+  return 
+
+}

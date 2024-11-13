@@ -1,9 +1,16 @@
 import { StyleSheet, View,Image, ImageBackground, Dimensions, Text } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import ProfilePictureSection from './ProfilePictureSection'
 import Colors from '../constants/colors'
+import { Ionicons } from '@expo/vector-icons';
 
 function CoverPictureSection(){
+  const [profilePicture, setProfilePicture] = useState(false);
+
+  function pickImage() {
+    setProfilePicture(!profilePicture);
+  }
+
   return (
     <View style={styles.coverPictureOuterContainer}>
       <View style={styles.coverPictureInnerContainer}>
@@ -18,13 +25,28 @@ function CoverPictureSection(){
       <View style={{
         flexDirection: 'row'
       }}>
-        <View style={styles.profilePagePicture}>
-          <ImageBackground
+        <View style={[styles.profilePagePicture]}>
+          {profilePicture && (
+            <ImageBackground
+            
             source={require("../assets/images/defaultProfilePicture.jpg")}
             style={{
               flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center'
             }}
           />
+          )}
+          {!profilePicture && (
+            <View style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+            <Ionicons  onPress={pickImage} name='image-outline' size={24} color={Colors.black[300]}/>
+            </View>
+          )}
+          
         </View>
 
         <View style={{
@@ -97,8 +119,10 @@ const styles = StyleSheet.create({
         height: (deviceHeigth/100)*8,
         width: (deviceHeigth/100)*8,
         overflow: 'hidden',
-        borderColor: Colors.white.deafult,
-        borderWidth: 4
+        borderColor: Colors.white.null,
+        borderWidth: 4,
+        backgroundColor: Colors.black[100],
+        
 
     },
 

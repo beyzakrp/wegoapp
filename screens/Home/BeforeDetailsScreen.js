@@ -54,6 +54,11 @@ function BeforeDetailsScreen({ route, navigation }) {
           />
         );
       },
+      headerLeft: () => {
+        return (
+          <Text></Text>
+        );
+      },
     });
   });
 

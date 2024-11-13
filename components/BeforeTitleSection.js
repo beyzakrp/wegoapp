@@ -7,8 +7,8 @@ function BeforeTitleSection({ name }) {
   return (
     <View
       style={{
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <View style={styles.container}>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     marginTop: 10,
-    marginRight: 30,
+    marginRight: 100,
     height: "auto",
     justifyContent: "center",
     alignItems: "center",
