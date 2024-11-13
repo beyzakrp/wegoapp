@@ -1,5 +1,7 @@
 # wegoapp
 
+ - 🌐 Our Website: www.wegoofficial.com
+ - 📨 Our E-mail: info@wegoofficial.com
 
 ## Overview 💡
 This project, **Wego**, is a social media application designed to enable managing users socializing and to create, join, and interact with events, while connecting with friends in real-time. 
